@@ -10,9 +10,14 @@ app.get('/', (req, res) => {
 });
 
 io.on('connection', (socket) => {
-    console.log('a user connected');
+    let msg = 'User connected';
+    console.log(msg);
+    io.emit('user-connected', msg);
+
     socket.on('disconnect', () => {
-        console.log('user disconnected');
+        let msg = 'User disconnect'
+        console.log(msg);
+        io.emit('user-disconnected', msg);
     });
 });
 

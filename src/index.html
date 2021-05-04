@@ -76,11 +76,25 @@
       });
 
       socket.on("chat-message", (msg) => {
+        createLiMsg(msg);
+      });
+
+      socket.on("user-disconnected", (msg) => {
+        console.log(msg);
+        createLiMsg(msg);
+      });
+
+      socket.on("user-connected", (msg) => {
+        console.log(msg);
+        createLiMsg(msg);
+      });
+
+      const createLiMsg = (msg) => {
         const item = document.createElement("li");
         item.textContent = msg;
         messages.appendChild(item);
         window.scrollTo(0, document.body.scrollHeight);
-      });
+      };
     </script>
   </body>
 </html>
